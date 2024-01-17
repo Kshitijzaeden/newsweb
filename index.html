@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsweb</title>
+
+    <!--font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Include the Flatpickr library -->
+    
+
+
+    <!--Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!---css style-->
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header style="padding: 5px 10px; margin-left: -10px;">
+      <a href="index.html">
+        <img id="logo" src="logo.png" width="120px" />
+      </a>
+      
+      <input type="text" id="selectedDate" style="display: none;" placeholder="Select a date" data-input>
+    
+    
+      <div class="inputSearch desktop">
+        <form id="searchForm">
+          <input type="text" placeholder="Type to search..." id="searchInput" />
+          <span> <i class="fa-solid fa-search"></i></span>
+        </form>
+      </div>
+      <nav class="desktop">
+        <ul>
+          <li onclick="Search('Latest')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Latest</li>
+          <li class="dropdown" onclick="toggleDropdown('usDropdown')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
+            US
+            <ul id="usDropdown" class="dropdown-content">
+              <li onclick="Search('California')">California</li>
+              <li onclick="Search('Texas')">Texas</li>
+              <li onclick="Search('Florida')">Florida</li>
+              <li onclick="Search('NewYork')">New York</li>
+              <li onclick="Search('Illinois')">Illinois</li>
+              <!-- Add more states as needed -->
+            </ul>
+          </li>
+          <li class="dropdown" onclick="toggleDropdown('indiaDropdown')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
+            India
+            <ul id="indiaDropdown" class="dropdown-content">
+              <li onclick="Search('Maharashtra')">Maharashtra</li>
+              <li onclick="Search('Uttar Pradesh')">Uttar Pradesh</li>
+              <li onclick="Search('Tamil Nadu')">Tamil Nadu</li>
+              <li onclick="Search('Karnataka')">Karnataka</li>
+              <li onclick="Search('Gujarat')">Gujarat</li>
+              <li onclick="Search('West Bengal')">West Bengal</li>
+              <li onclick="Search('Rajasthan')">Rajasthan</li>
+              <li onclick="Search('Madhya Pradesh')">Madhya Pradesh</li>
+              <li onclick="Search('Andhra Pradesh')">Andhra Pradesh</li>
+              <li onclick="Search('Kerala')">Kerala</li>              
+            </ul>
+          </li>
+          <li class="dropdown" onclick="toggleDropdown('ukDropdown')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
+            UK
+            <ul id="ukDropdown" class="dropdown-content">
+                <li onclick="Search('England')">England</li>
+                <li onclick="Search('Scotland')">Scotland</li>
+                <li onclick="Search('Wales')">Wales</li>
+                <li onclick="Search('Northern Ireland')">Northern Ireland</li>
+                <li onclick="Search('London')">London</li>
+            </ul>
+        </li>
+        
+        <li onclick="Search('tech')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Tech</li>
+        <li onclick="Search('Food')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Food</li>
+        <li onclick="Search('movies')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Movies</li>
+        <li onclick="Search('business')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Business</li>
+        </ul>
+      </nav>
+
+      <div class="menuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <!------>
+      <div class="mobile hidden">
+        <nav>
+          <ul>
+            <li onclick="Search('tech')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Tech</li>
+            <li onclick="Search('food')">Food</li>
+            <li onclick="Search('movies')">Movies</li>
+            <li onclick="Search('business')">Business</li>
+          </ul>
+        </nav>
+        <div class="inputSearch">
+        <form id="searchFormMobile" id="searchInputMobile">
+          <input type="text" placeholder="Type to search..." />
+          <span> <i class="fa-solid fa-search"></i></span>
+        </div>
+        </form>
+      </div>
+    </header>
+
+    <!-- main  -->
+
+    <main></main>
+
+    <script src="index.js">
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/baa4cf64-74f3-445e-8e42-d36d737b9bdc/webchat/config.js" defer></script>
+  </body>
+</html>
