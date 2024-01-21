@@ -67,33 +67,6 @@ searchBtnMobile.addEventListener("submit", async (e) => {
     renderMain(data.articles);
 });
 
-// Add this function to handle news fetching based on selected date
-function fetchNewsBySelectedDate() {
-    const selectedDate = document.getElementById("selectedDate").value;
-
-    if (selectedDate) {
-        const formattedDate = new Date(selectedDate).toISOString().split('T')[0];
-        console.log("Selected Date:", formattedDate);
-
-        const query = `publishedAt:${formattedDate}`;
-        console.log("Query:", query);
-
-        fetchData(query)
-        .then(data => {
-            if (data.articles) {
-                renderMain(data.articles);
-            } else {
-                console.error("Invalid response format:", data);
-                alert("Error fetching news. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error("API request failed:", error);
-            alert("Error fetching news. Please try again.");
-        });
-    }
-}
-
 searchBtn.addEventListener("submit", async (e) => {
     e.preventDefault();
     const searchTerm = searchInput.value.trim();
@@ -124,4 +97,17 @@ async function Search(query) {
     const data = await fetchData(query);
     renderMain(data.articles);
 }
+
+const searchIcon = document.querySelector(".inputSearch span");
+searchIcon.addEventListener("click", async () => {
+    const searchInputValue = searchInput.value.trim();
+    
+    if (searchInputValue) {
+        const data = await fetchData(searchInputValue);
+        renderMain(data.articles);
+    } else {
+        alert("Please enter a search term.");
+    }
+});
+
 

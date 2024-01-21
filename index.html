@@ -15,8 +15,6 @@
       referrerpolicy="no-referrer"
     />
     <!-- Include the Flatpickr library -->
-    
-
 
     <!--Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,16 +26,14 @@
 
     <!---css style-->
     <link rel="stylesheet" href="index.css" />
+  
   </head>
   <body>
-    <header style="padding: 5px 10px; margin-left: -10px;">
+    <header style="padding: 5px 10px; margin-left:  0px;">
       <a href="index.html">
         <img id="logo" src="logo.png" width="120px" />
       </a>
       
-      <input type="text" id="selectedDate" style="display: none;" placeholder="Select a date" data-input>
-    
-    
       <div class="inputSearch desktop">
         <form id="searchForm">
           <input type="text" placeholder="Type to search..." id="searchInput" />
@@ -46,6 +42,7 @@
       </div>
       <nav class="desktop">
         <ul>
+        </div>
           <li onclick="Search('Latest')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Latest</li>
           <li class="dropdown" onclick="toggleDropdown('usDropdown')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
             US
@@ -120,6 +117,7 @@
 
     <script src="index.js">
     </script>
+    <script src="login.js"></script>
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
     <script src="https://mediafiles.botpress.cloud/baa4cf64-74f3-445e-8e42-d36d737b9bdc/webchat/config.js" defer></script>
   </body>
