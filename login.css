@@ -124,3 +124,14 @@ font-weight: 500;
 text-decoration: underline;
 }
 
+/* Add your existing styles here */
+
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+  }
+  

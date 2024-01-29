@@ -33,7 +33,9 @@
       <a href="index.html">
         <img id="logo" src="logo.png" width="120px" />
       </a>
-      
+      <div class="menuBtn" id="loginBtn">
+        <i class="fa-solid fa-door-open"></i> Login
+    </div>
       <div class="inputSearch desktop">
         <form id="searchForm">
           <input type="text" placeholder="Type to search..." id="searchInput" />
@@ -42,6 +44,7 @@
       </div>
       <nav class="desktop">
         <ul>
+          
         </div>
           <li onclick="Search('Latest')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Latest</li>
           <li class="dropdown" onclick="toggleDropdown('usDropdown')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
@@ -85,6 +88,9 @@
         <li onclick="Search('Food')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Food</li>
         <li onclick="Search('movies')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Movies</li>
         <li onclick="Search('business')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">Business</li>
+        <ul>
+          <li><a href="login.html">Login</a></li>
+        </ul>
         </ul>
       </nav>
 
@@ -111,12 +117,16 @@
       </div>
     </header>
 
+    <div id="loginModal" class="modal hidden">
+      <!-- Load the login form using an iframe or other means -->
+      <iframe src="login.html" frameborder="0"></iframe>
+    </div>
+
     <!-- main  -->
 
     <main></main>
 
-    <script src="index.js">
-    </script>
+    <script src="index.js"></script>
     <script src="login.js"></script>
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
     <script src="https://mediafiles.botpress.cloud/baa4cf64-74f3-445e-8e42-d36d737b9bdc/webchat/config.js" defer></script>
