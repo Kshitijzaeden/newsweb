@@ -267,3 +267,17 @@ hidden {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000; /* Ensure the modal appears above other content */
 }
+
+/* Your existing CSS styles */
+
+footer {
+    text-align: center;
+    background-color: #2c3e50; /* Set background color */
+    padding: 10px;
+    color: #ffffff; /* Set text color to white */
+}
+
+#totalVisitors {
+    font-size: 50px; /* Set the font size to match the count size */
+    font-weight: bold;
+}

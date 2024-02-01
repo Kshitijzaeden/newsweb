@@ -109,5 +109,77 @@ searchIcon.addEventListener("click", async () => {
         alert("Please enter a search term.");
     }
 });
+let visitorCount = localStorage.getItem('visitorCount') || 0;
 
+function updateVisitorCount() {
+    const visitorCountElement = document.getElementById("visitorCount");
+    visitorCount++;
+    visitorCountElement.textContent = visitorCount;
 
+    // Store the updated count in local storage
+    localStorage.setItem('visitorCount', visitorCount);
+}
+
+// Call this function whenever you want to update the visitor count
+updateVisitorCount();
+
+// Add this at the beginning of your index.js
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize the date picker
+    flatpickr("#datePicker", {
+        dateFormat: "Y-m-d", // Set the date format as needed
+        onClose: function (selectedDates, dateStr, instance) {
+            // Handle the selected date here (you can call a function to load news for the selected date)
+            handleSelectedDate(dateStr);
+        }
+    });
+
+    // Add a click event listener for the calendar icon
+    const calendarIcon = document.getElementById('calendarIcon');
+    calendarIcon.addEventListener('click', function () {
+        // Show the date picker when the calendar icon is clicked
+        flatpickr("#datePicker").open();
+    });
+});
+
+// Function to handle the selected date and load news
+function handleSelectedDate(selectedDate) {
+    // You can load news for the selected date here
+    // For now, let's log the selected date to the console
+    console.log('Selected Date:', selectedDate);
+    // Call a function to load news for the selected date
+    loadNewsForDate(selectedDate);
+}
+
+// Function to load news for a specific date
+function loadNewsForDate(date) {
+    // Implement your logic to fetch and display news for the selected date
+    // You can use the fetchData function or any other method you prefer
+    fetchData(`?q=your_search_query&from=${date}&to=${date}`).then(data => {
+        renderMain(data.articles);
+    });
+}
+
+function loadSubcategories(state) {
+    // Clear existing subcategories
+    const subcategoriesContainer = document.querySelector('.subcategories');
+    subcategoriesContainer.innerHTML = '';
+
+    // Add subcategories for the selected state
+    const subcategories = ['Sports', 'Tech', 'Business']; // Add more subcategories as needed
+
+    subcategories.forEach((subcategory) => {
+        const subcategoryElement = document.createElement('span');
+        subcategoryElement.textContent = subcategory;
+        subcategoryElement.classList.add('subcategory');
+        subcategoryElement.onclick = () => loadSubcategoryNews(state, subcategory.toLowerCase());
+        subcategoriesContainer.appendChild(subcategoryElement);
+    });
+}
+
+// Function to load news for a specific subcategory of a state
+async function loadSubcategoryNews(state, subcategory) {
+    const query = `${state} ${subcategory}`;
+    const data = await fetchData(query);
+    renderMain(data.articles);
+}
