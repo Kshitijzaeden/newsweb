@@ -10,7 +10,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 min-height: 100vh;
-
+background: linear-gradient(90deg, rgba(157,5,5,1) 0%, rgba(224,255,4,1) 57%, rgba(0,212,255,1) 100%);
 }
 .wrapper {
 position: relative;

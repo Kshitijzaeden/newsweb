@@ -7,7 +7,7 @@
     <title>Newsweb</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <!--font awesome-->
     <link
@@ -73,7 +73,14 @@
           <li class="dropdown" onclick="toggleDropdown('indiaDropdown')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
             India
             <ul id="indiaDropdown" class="dropdown-content">
-              <li onclick="Search('Maharashtra')">Maharashtra</li>
+           
+              <li class="dropdown" onmouseenter="showMaharashtraDropdown()" onmouseleave="hideMaharashtraDropdown()" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
+                Maharashtra
+                <ul id="maharashtraDropdown" class="dropdown-content" style="display: none;">
+                    <li onclick="Search('Maharashtra Technology')"> Technology</li>
+                    <li onclick="Search('Maharashtra Business')"> Business</li>
+                </ul>
+            </li>
               <li onclick="Search('Uttar Pradesh')">Uttar Pradesh</li>
               <li onclick="Search('Tamil Nadu')">Tamil Nadu</li>
               <li onclick="Search('Karnataka')">Karnataka</li>
@@ -134,7 +141,20 @@
       <iframe src="login.html" frameborder="0"></iframe>
     </div>
 
-    <main></main>
+    <main>
+      <section id="userContentSection" style="display: none;">
+        <h2>Submit Your Own Content</h2>
+        <form id="userContentForm">
+          <label for="articleTitle">Article Title:</label>
+          <input type="text" id="articleTitle" required><br>
+          <label for="articleContent">Article Content:</label>
+          <textarea id="articleContent" rows="6" required></textarea><br>
+          <label for="articleImage">Upload Image:</label>
+          <input type="file" id="articleImage" accept="image/*" required><br>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
     <footer>
       <div id="totalVisitors">Total Visitors: <span id="visitorCount">0</span></div>
   </footer>

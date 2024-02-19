@@ -160,26 +160,16 @@ function loadNewsForDate(date) {
     });
 }
 
-function loadSubcategories(state) {
-    // Clear existing subcategories
-    const subcategoriesContainer = document.querySelector('.subcategories');
-    subcategoriesContainer.innerHTML = '';
-
-    // Add subcategories for the selected state
-    const subcategories = ['Sports', 'Tech', 'Business']; // Add more subcategories as needed
-
-    subcategories.forEach((subcategory) => {
-        const subcategoryElement = document.createElement('span');
-        subcategoryElement.textContent = subcategory;
-        subcategoryElement.classList.add('subcategory');
-        subcategoryElement.onclick = () => loadSubcategoryNews(state, subcategory.toLowerCase());
-        subcategoriesContainer.appendChild(subcategoryElement);
-    });
+// Function to load news for a specific state
+async function loadStateNews(state) {
+    // Navigate to another page with state-specific news
+    window.location.href = `${state.toLowerCase()}-news.html`;
 }
 
-// Function to load news for a specific subcategory of a state
-async function loadSubcategoryNews(state, subcategory) {
-    const query = `${state} ${subcategory}`;
-    const data = await fetchData(query);
-    renderMain(data.articles);
+function showMaharashtraDropdown() {
+    document.getElementById('maharashtraDropdown').style.display = 'block';
+}
+
+function hideMaharashtraDropdown() {
+    document.getElementById('maharashtraDropdown').style.display = 'none';
 }

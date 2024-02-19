@@ -281,3 +281,40 @@ footer {
     font-size: 50px; /* Set the font size to match the count size */
     font-weight: bold;
 }
+
+.categories-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f6f9;
+    padding: 10px;
+  }
+  
+  .category {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #d4ee11;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .category:hover {
+    background-color: #c2d801;
+  }
+
+
+/*maharashtra dropdown menu*/
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%; /* Adjust this value to change the position */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
