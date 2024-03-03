@@ -123,13 +123,40 @@ function updateVisitorCount() {
 // Call this function whenever you want to update the visitor count
 updateVisitorCount();
 
-// Add this at the beginning of your index.js
+// Inside handleSelectedDate function
+function handleSelectedDate(selectedDate) {
+    console.log("Selected Date:", selectedDate);
+    // Fetch news for the selected date
+    loadNewsForDate(selectedDate);
+}
+
+// Inside loadNewsForDate function
+function loadNewsForDate(date) {
+    // Define the date range for filtering (from date to the next day)
+    const fromDate = date;
+    const toDate = new Date(new Date(date).getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+    // Construct the query to filter news articles by date range
+    const query = `?from=${fromDate}&to=${toDate}&apiKey=92b584ccc46f4af2bc8c8b368862e511`;
+
+
+    // Fetch news articles based on the constructed query
+    fetchData(query)
+        .then(data => {
+            renderMain(data.articles);
+        })
+        .catch(error => {
+            console.error('Error fetching news:', error);
+        });
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize the date picker
     flatpickr("#datePicker", {
         dateFormat: "Y-m-d", // Set the date format as needed
         onClose: function (selectedDates, dateStr, instance) {
-            // Handle the selected date here (you can call a function to load news for the selected date)
+            // Handle the selected date here
             handleSelectedDate(dateStr);
         }
     });
@@ -141,24 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
         flatpickr("#datePicker").open();
     });
 });
-
-// Function to handle the selected date and load news
-function handleSelectedDate(selectedDate) {
-    // You can load news for the selected date here
-    // For now, let's log the selected date to the console
-    console.log('Selected Date:', selectedDate);
-    // Call a function to load news for the selected date
-    loadNewsForDate(selectedDate);
-}
-
-// Function to load news for a specific date
-function loadNewsForDate(date) {
-    // Implement your logic to fetch and display news for the selected date
-    // You can use the fetchData function or any other method you prefer
-    fetchData(`?q=your_search_query&from=${date}&to=${date}`).then(data => {
-        renderMain(data.articles);
-    });
-}
 
 // Function to load news for a specific state
 async function loadStateNews(state) {
@@ -172,4 +181,21 @@ function showMaharashtraDropdown() {
 
 function hideMaharashtraDropdown() {
     document.getElementById('maharashtraDropdown').style.display = 'none';
+}
+
+function fetchNews(newsSource) {
+    // Call the fetchData function with the specified news source
+    fetchData(newsSource)
+        .then(data => {
+            renderMain(data.articles);
+        })
+        .catch(error => {
+            console.error('Error fetching news:', error);
+        });
+}
+
+function selectLanguage(language) {
+    if (language) {
+        fetchNews(language);
+    }
 }

@@ -318,3 +318,55 @@ footer {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: center; /* Change to space-between for space between items */
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 80px;
+    margin-left: 80px;
+    cursor: pointer;
+}
+
+.flex-item {
+    flex: 0 1 18%; /* Adjust width as needed */
+    text-align: center;
+    padding: 10px; /* Adjust padding as needed */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 500px;
+    margin-right: 10px; /* Add margin between items */
+    transition: background-color 0.3s; /* Add transition for smooth effect */
+}
+
+.flex-item:last-child {
+    margin-right: 0; /* Remove margin from last item */
+}
+
+.flex-item:hover {
+    background-color: #b8da13; /* Change background color on hover */
+}
+/* Style for language selection dropdown */
+.language-dropdown select {
+    padding: 5px 15px; /* Adjust padding as needed */
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background-color: #0ef534; /* Background color */
+    color: #333;
+    cursor: pointer;
+    border-color: #01040f;
+}
+
+/* Style for dropdown options */
+.language-dropdown select option {
+    background-color: #fff; /* Background color for options */
+    color: #333;
+}
+
+/* Style for bold option */
+.bold-option {
+    font-weight: bold;
+}
