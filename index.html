@@ -62,12 +62,12 @@
             <select onchange="selectLanguage(this.value)">
                 <option value="" class="bold-option">Select Language</option>
                 <option value="en">English</option>
-                <option value="fr">French</option>
+                <option value="fr">Japan</option>
                 <option value="es">Spanish</option>
-                <option value="mr">Marathi</option>
-                <option value="hi">Hindi</option>
-                <option value="kn">Kannada</option>
-                <option value="ta">Tamil</option>
+                <option value="Lokmat.com">Marathi</option>
+                <option value="he">Hindi</option>
+                <option value="tv9kannada.com">Kannada</option>
+                <option value="tamil.samayam.com">Tamil</option>
                 <!-- Add more languages as needed -->
             </select>
         </div>
@@ -96,17 +96,97 @@
                 <ul id="maharashtraDropdown" class="dropdown-content" style="display: none;">
                     <li onclick="Search('Maharashtra Technology')"> Technology</li>
                     <li onclick="Search('Maharashtra Business')"> Business</li>
+                    <li onclick="Search('Maharashtra Sports')"> Sports</li>
+                    <li onclick="Search('Maharashtra Foods')"> Foods</li>
                 </ul>
             </li>
-              <li onclick="Search('Uttar Pradesh')">Uttar Pradesh</li>
-              <li onclick="Search('Tamil Nadu')">Tamil Nadu</li>
-              <li onclick="Search('Karnataka')">Karnataka</li>
-              <li onclick="Search('Gujarat')">Gujarat</li>
-              <li onclick="Search('West Bengal')">West Bengal</li>
-              <li onclick="Search('Rajasthan')">Rajasthan</li>
-              <li onclick="Search('Madhya Pradesh')">Madhya Pradesh</li>
-              <li onclick="Search('Andhra Pradesh')">Andhra Pradesh</li>
-              <li onclick="Search('Kerala')">Kerala</li>              
+            <li class="dropdown" onmouseenter="showuttarPradeshDropdown()" onmouseleave="hideuttarPradeshDropdown()">
+              Uttar Pradesh
+              <ul id="uttarPradeshDropdown" class="dropdown-content" style="display: none;">
+                  <li onclick="Search('Uttar Pradesh Technology')"> Technology</li>
+                  <li onclick="Search('Uttar Pradesh Business')"> Business</li>
+                  <li onclick="Search('Uttar Pradesh Sports')"> Sports</li>
+                  <li onclick="Search('Uttar Pradesh Foods')"> Foods</li>
+              </ul>
+          </li>
+          <li class="dropdown" onmouseenter="showtamilNaduDropdown()" onmouseleave="hidetamilNaduDropdown()">
+              Tamil Nadu
+              <ul id="tamilNaduDropdown" class="dropdown-content" style="display: none;">
+                  <li onclick="Search('Tamil Nadu Technology')"> Technology</li>
+                  <li onclick="Search('Tamil Nadu Business')"> Business</li>
+                  <li onclick="Search('Tamil Nadu Sports')"> Sports</li>
+                  <li onclick="Search('Tamil Nadu Foods')"> Foods</li>
+              </ul>
+          </li>
+          <!-- Add similar structure for other states -->
+          <li class="dropdown" onmouseenter="showkarnatakaDropdown()" onmouseleave="hideStateDropdown()">
+            Karnataka
+            <ul id="karnatakaDropdown" class="dropdown-content" style="display: none;">
+                <li onclick="Search('Karnataka Technology')"> Technology</li>
+                <li onclick="Search('Karnataka Business')"> Business</li>
+                <li onclick="Search('Karnataka Sports')"> Sports</li>
+                <li onclick="Search('Karnataka Foods')"> Foods</li>
+            </ul>
+        </li>
+        <li class="dropdown" onmouseenter="showgujuratDropdown()" onmouseleave="hideStateDropdown()">
+            Gujarat
+            <ul id="gujaratDropdown" class="dropdown-content" style="display: none;">
+                <li onclick="Search('Gujarat Technology')"> Technology</li>
+                <li onclick="Search('Gujarat Business')"> Business</li>
+                <li onclick="Search('Gujarat Sports')"> Sports</li>
+                <li onclick="Search('Gujarat Foods')"> Foods</li>
+            </ul>
+        </li>
+        <li class="dropdown" onmouseenter="showwestBengalDropdown()" onmouseleave="hideStateDropdown()">
+            West Bengal
+            <ul id="westBengalDropdown" class="dropdown-content" style="display: none;">
+                <li onclick="Search('West Bengal Technology')"> Technology</li>
+                <li onclick="Search('West Bengal Business')"> Business</li>
+                <li onclick="Search('West Bengal Sports')"> Sports</li>
+                <li onclick="Search('West Bengal Foods')"> Foods</li>
+            </ul>
+        </li>
+        <li class="dropdown" onmouseenter="showrajasthanDropdown()" onmouseleave="hideStateDropdown()">
+            Rajasthan
+            <ul id="rajasthanDropdown" class="dropdown-content" style="display: none;">
+                <li onclick="Search('Rajasthan Technology')"> Technology</li>
+                <li onclick="Search('Rajasthan Business')"> Business</li>
+                <li onclick="Search('Rajasthan Sports')"> Sports</li>
+                <li onclick="Search('Rajasthan Foods')"> Foods</li>
+            </ul>
+        </li>
+        <!-- Add more states as needed -->
+
+   
+    <li class="dropdown" onmouseenter="showmadhyaPradeshDropdown()" onmouseleave="hideStateDropdown()">
+        Madhya Pradesh
+        <ul id="madhyaPradeshDropdown" class="dropdown-content" style="display: none;">
+            <li onclick="Search('Madhya Pradesh Technology')"> Technology</li>
+            <li onclick="Search('Madhya Pradesh Business')"> Business</li>
+            <li onclick="Search('Madhya Pradesh Sports')"> Sports</li>
+            <li onclick="Search('Madhya Pradesh Foods')"> Foods</li>
+        </ul>
+    </li>
+    <li class="dropdown" onmouseenter="showandhraPradeshDropdown()" onmouseleave="hideStateDropdown()">
+        Andhra Pradesh
+        <ul id="andhraPradeshDropdown" class="dropdown-content" style="display: none;">
+            <li onclick="Search('Andhra Pradesh Technology')"> Technology</li>
+            <li onclick="Search('Andhra Pradesh Business')"> Business</li>
+            <li onclick="Search('Andhra Pradesh Sports')"> Sports</li>
+            <li onclick="Search('Andhra Pradesh Foods')"> Foods</li>
+        </ul>
+    </li>
+    <li class="dropdown" onmouseenter="showkeralaDropdown()" onmouseleave="hideStateDropdown()">
+        Kerala
+        <ul id="keralaDropdown" class="dropdown-content" style="display: none;">
+            <li onclick="Search('Kerala Technology')"> Technology</li>
+            <li onclick="Search('Kerala Business')"> Business</li>
+            <li onclick="Search('Kerala Sports')"> Sports</li>
+            <li onclick="Search('Kerala Foods')"> Foods</li>
+        </ul>
+    </li>
+    <!-- Add more states as needed -->
+                
             </ul>
           </li>
           <li class="dropdown" onclick="toggleDropdown('ukDropdown')" style="font-weight: bold; font-family: 'Arial Black', sans-serif;">
@@ -156,7 +236,7 @@
     <div class="flex-container">
       <div class="flex-item" onclick="fetchNews('NDTV News')"><strong>NDTV</strong></div>
       <div class="flex-item" onclick="fetchNews('BBC News')"><strong>BBC</strong></div>
-      <div class="flex-item" onclick="fetchNews('CNN News')"><strong>CNN</strong></div>
+      <div class="flex-item" onclick="fetchNews('Lokmat.com')"><strong>Lokmat</strong></div>
       <div class="flex-item" onclick="fetchNews('Fox News')"><strong>Fox</strong></div>
       <div class="flex-item" onclick="fetchNews('indianexpress.com')"><strong>The Indian Express</strong></div>
       <div class="flex-item" onclick="fetchNews('Timesofindia.com')"><strong>Times</strong></div>      

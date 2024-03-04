@@ -183,6 +183,34 @@ function hideMaharashtraDropdown() {
     document.getElementById('maharashtraDropdown').style.display = 'none';
 }
 
+function showuttarPradeshDropdown() {
+    document.getElementById('uttarPradeshDropdown').style.display = 'block';
+}
+
+function hideuttarPradeshDropdown() {
+    document.getElementById('uttarPradeshDropdown').style.display = 'none';
+}
+
+function showtamilNaduDropdown() {
+    document.getElementById('tamilNaduDropdown').style.display = 'block';
+}
+
+function hidetamilNaduDropdown() {
+    document.getElementById('tamilNaduDropdown').style.display = 'none';
+}
+
+
+
+function showgujuratDropdown() {
+    document.getElementById('gujuratDropdown').style.display = 'block';
+}
+
+function hidegujuratDropdown() {
+    document.getElementById('gujuratDropdown').style.display = 'none';
+}
+
+
+
 function fetchNews(newsSource) {
     // Call the fetchData function with the specified news source
     fetchData(newsSource)
