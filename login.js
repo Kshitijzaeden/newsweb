@@ -8,6 +8,12 @@ signInBtnLink.addEventListener('click', () => {
     wrapper.classList.toggle('active');
 });
 
+// Add an event listener to the username input field to update its text color
+const loginUsernameInput = document.getElementById('loginUsername');
+loginUsernameInput.addEventListener('input', function() {
+    this.style.color = 'white';
+});
+
 function showLoginModal() {
     const loginModal = document.getElementById("loginModal");
     loginModal.classList.remove("hidden");
@@ -31,7 +37,7 @@ function performLogin() {
     // Perform client-side authentication (for demonstration purposes)
     // In a real-world scenario, you would send these credentials to a server for verification
   
-    if (enteredUsername === 'demo' && enteredPassword === 'demo') {
+    if (enteredUsername === 'kshitij' && enteredPassword === 'demo') {
       // Display success message above the login form
       showSuccessMessage('Login successful!', 'successMessage');
       

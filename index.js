@@ -123,51 +123,63 @@ function updateVisitorCount() {
 // Call this function whenever you want to update the visitor count
 updateVisitorCount();
 
-// Inside handleSelectedDate function
-function handleSelectedDate(selectedDate) {
-    console.log("Selected Date:", selectedDate);
-    // Fetch news for the selected date
-    loadNewsForDate(selectedDate);
-}
-
-// Inside loadNewsForDate function
-function loadNewsForDate(date) {
-    // Define the date range for filtering (from date to the next day)
-    const fromDate = date;
-    const toDate = new Date(new Date(date).getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-
-    // Construct the query to filter news articles by date range
-    const query = `?from=${fromDate}&to=${toDate}&apiKey=92b584ccc46f4af2bc8c8b368862e511`;
-
-
-    // Fetch news articles based on the constructed query
-    fetchData(query)
-        .then(data => {
-            renderMain(data.articles);
-        })
-        .catch(error => {
-            console.error('Error fetching news:', error);
-        });
-}
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize the date picker
+    // Initialize Flatpickr
     flatpickr("#datePicker", {
-        dateFormat: "Y-m-d", // Set the date format as needed
-        onClose: function (selectedDates, dateStr, instance) {
-            // Handle the selected date here
-            handleSelectedDate(dateStr);
-        }
+      dateFormat: "Y-m-d", // Date format (YYYY-MM-DD)
+      onClose: function (selectedDates, dateStr, instance) {
+        handleSelectedDate(dateStr); // Handle selected date
+      }
     });
 
-    // Add a click event listener for the calendar icon
+    // Add click event listener for calendar icon
     const calendarIcon = document.getElementById('calendarIcon');
     calendarIcon.addEventListener('click', function () {
-        // Show the date picker when the calendar icon is clicked
-        flatpickr("#datePicker").open();
+      flatpickr("#datePicker").open(); // Open date picker when icon is clicked
     });
-});
+  });
+
+  // Function to handle selected date
+  function handleSelectedDate(selectedDate) {
+    console.log("Selected Date:", selectedDate);
+    // Fetch news articles for the selected date
+    fetchNewsForDate(selectedDate);
+  }
+
+  // Function to fetch news articles for a specific date
+  function fetchNewsForDate(date) {
+    // Construct the API query URL for fetching news articles based on the selected date
+    const url = `https://newsapi.org/v2/everything?q=&from=${date}&to=${date}&apiKey=YOUR_API_KEY`;
+
+    // Make a fetch request to the API
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // Render the fetched news articles
+        renderNewsArticles(data.articles);
+      })
+      .catch(error => {
+        console.error('Error fetching news:', error);
+      });
+  }
+
+  // Function to render news articles on the page
+  function renderNewsArticles(articles) {
+    const newsContainer = document.getElementById('newsContainer');
+    // Clear previous news articles
+    newsContainer.innerHTML = '';
+
+    // Render each news article
+    articles.forEach(article => {
+      const articleElement = document.createElement('div');
+      articleElement.innerHTML = `
+        <h2>${article.title}</h2>
+        <p>${article.description}</p>
+        <a href="${article.url}" target="_blank">Read more</a>
+      `;
+      newsContainer.appendChild(articleElement);
+    });
+  }
 
 // Function to load news for a specific state
 async function loadStateNews(state) {
